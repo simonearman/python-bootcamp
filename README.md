@@ -9,3 +9,4 @@ I've used the mentioned bootcamp to learn python, while having some prior progra
 * Day 3: [treasure_island.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/treasure_island.py) (Control flow and logical operators)
 * Day 4: [rock_paper_scissors.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/rock_paper_scissors.py) (Random module)
 * Day 5: [password_generator.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/password_generator.py) (Loops and lists)
+* Day 6: [Reeborg's World](https://github.com/simonearman/python-bootcamp/tree/main/projects/reeborgs_world) (Functions)
