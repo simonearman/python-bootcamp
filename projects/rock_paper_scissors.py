@@ -38,7 +38,7 @@ if "rock".startswith(move):
     move = "rock"
 elif "paper".startswith(move):
     print(f"\nYour move: paper{paper}")
-    move = "rock"
+    move = "paper"
 elif "scissors".startswith(move):
     print(f"\nYour move: scissors{scissors}")
     move = "scissors"
@@ -61,19 +61,19 @@ else:
 # Results
 # First we check for a draw
 if move == ai_move:
-    print("It's a draw!")
+    print(f"You both chose {move}, it's a draw!")
 elif move == "rock":
     if ai_move == "scissors":
-        print(f"Rock beats scissors, you win!")
+        print("Rock beats scissors, you win!")
     else:
-        print(f"Paper beats rock, you lose!")
+        print("Paper beats rock, you lose!")
 elif move == "paper":
     if ai_move == "rock":
-        print(f"Paper beats rock, you win!")
+        print("Paper beats rock, you win!")
     else:
-        print(f"Scissors beat paper, you lose!")
+        print("Scissors beat paper, you lose!")
 elif move == "scissors":
     if ai_move == "paper":
-        print(f"Scissors beat paper, you win!")
+        print("Scissors beat paper, you win!")
     else:
-        print(f"Rock beats scissors, you lose!")
+        print("Rock beats scissors, you lose!")
