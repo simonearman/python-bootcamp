@@ -52,11 +52,15 @@ def draw_game(_guessed_letters, _word_letters, _lives):
     print("\n".join(hanged_drawing))
 
 
-# Necessary variables -> lives, reading words from words.txt and choosing a random word, and guessed letters list
 lives = 6
-words = open("words.txt").read().splitlines()
+words_file = open("words.txt")
+# Reading the file and making a list of all words with splitlines()
+words = words_file.read().splitlines()
+# Choosing a random word
 word = random.choice(words).lower()
+# Dividing the word into a list of characters
 word_letters = split_string(word)
+words_file.close()
 guessed_letters = []
 
 # Main gameplay code
