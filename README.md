@@ -11,3 +11,4 @@ This is where I store pieces of code for the 100 Days of Code python bootcamp.
 * Day 5: [password_generator.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/password_generator.py) (Loops and lists)
 * Day 6: [Reeborg's World](https://github.com/simonearman/python-bootcamp/tree/main/projects/reeborgs_world) (Functions)
 * Day 7: [hangman](https://github.com/simonearman/python-bootcamp/tree/main/projects/hangman)
+* Day 8: [caesar_cipher.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/caesar_cipher.py) (Function parameters)
