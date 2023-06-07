@@ -1,7 +1,6 @@
 import random
 import string
-
-print("Welcome to hangman\n")
+import os
 
 # Gallows image by me
 hanged_drawing = ["   ==========",
@@ -12,7 +11,7 @@ hanged_drawing = ["   ==========",
                   "   I",
                   "   I",
                   "   I",
-                  "======="]
+                  "=======\n"]
 
 
 # Takes a string, returns a list of characters in that string
@@ -21,6 +20,14 @@ def split_string(input_string):
     for char in input_string:
         str_list.append(char)
     return str_list
+
+
+# Cleares the console 
+def clear_console():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 
 # Takes the guessed letters, letters in the random word and player's lives left and draws the game out based on them
@@ -49,6 +56,8 @@ def draw_game(_guessed_letters, _word_letters, _lives):
             word_to_draw += "_ "
     hanged_drawing[1] = f"   I        |                 CHECKED LETTERS: {', '.join(_guessed_letters)}"
     hanged_drawing[6] = f"   I                          WORD: {word_to_draw}"
+    clear_console()
+    print("Welcome to hangman!\n")
     print("\n".join(hanged_drawing))
 
 
