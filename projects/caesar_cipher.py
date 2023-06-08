@@ -1,40 +1,31 @@
 print("Welcome to Caesar cipher!")
 
 
-def encrypt(_message, _shift):
-    encrypted_message = ""
+def caesar(_message, _shift, _mode):
+    new_message = ""
     for char in _message:
         # Checking if the character is a letter
         if (ord(char) > 96 and ord(char) < 123) or (ord(char) > 64 and ord(char) < 91):
             # Getting the letter ID, where "a" is 0 and "z" is 25
             letter_id = ord(char.lower()) - 97
-            # Checking if the shift will move the letter ID above 25, in which case it loops around the count
-            if letter_id + _shift < 26:
-                encrypted_message += chr(ord(char) + _shift)
+            # Checks if the mode is encryption
+            if _mode == "encrypt":
+                # Checking if the shift will move the letter ID above 25, in which case it loops around the count
+                if letter_id + _shift < 26:
+                    new_message += chr(ord(char) + _shift)
+                else:
+                    new_message += chr(ord(char) + _shift - 26)
+            # Else, the mode is decryption
             else:
-                encrypted_message += chr(ord(char) + _shift - 26)
+                # Checking if the shift will move the letter ID below 0, in which case it loops around the count
+                if letter_id - _shift >= 0:
+                    new_message += chr(ord(char) - _shift)
+                else:
+                    new_message += chr(ord(char) - _shift + 26)
         # If not a letter just rewrite the character
         else:
-            encrypted_message += char
-    return encrypted_message
-
-
-def decrypt(_message, _shift):
-    decrypted_message = ""
-    for char in _message:
-        # Checking if the character is a letter
-        if (ord(char) > 96 and ord(char) < 123) or (ord(char) > 64 and ord(char) < 91):
-            # Getting the letter ID, where "a" is 0 and "z" is 25
-            letter_id = ord(char.lower()) - 97
-            # Checking if the shift will move the letter ID below 0, in which case it loops around the count
-            if letter_id - _shift >= 0:
-                decrypted_message += chr(ord(char) - _shift)
-            else:
-                decrypted_message += chr(ord(char) - _shift + 26)
-        # If not a letter just rewrite the character
-        else:
-            decrypted_message += char
-    return decrypted_message
+            new_message += char
+    return new_message
 
 
 # Asks for a number until valid
@@ -46,16 +37,16 @@ def ask_shift():
     return int(shift)%26
 
 
-# Asks for either encryption or decryption until valid
+# Asks for either encryption or decryption until valid, allows for abbreviations
 mode = input("Type \"encrypt\" to encrypt or \"decrypt\" to decrypt a message: ").lower()
 while mode == "" or not ("encrypt".startswith(mode) or "decrypt".startswith(mode)):
     mode = input(f"\"{mode}\" is not an option. Type in either \"encrypt\" or \"decrypt\": ")
 
-# Checks for mode
+# Sets the mode name right for the print function
 if "encrypt".startswith(mode):
-    message = input("Type in the message you want to encrypt: ")
-    print(f"The encrypted message is:\n{encrypt(message, ask_shift())}")
+    mode = "encrypt"
 else:
-    message = input("Type in the message you want to decrypt: ")
-    print(f"The decrypted message is:\n{decrypt(message, ask_shift())}")
+    mode = "decrypt"
     
+message = input(f"Type in the message you want to {mode}: ")
+print(f"The {mode}ed message is:\n{caesar(message, ask_shift(), mode)}")
