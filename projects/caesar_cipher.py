@@ -3,25 +3,20 @@ print("Welcome to Caesar cipher!")
 
 def caesar(_message, _shift, _mode):
     new_message = ""
+    if _mode == "decrypt":
+        _shift *= -1
     for char in _message:
         # Checking if the character is a letter
         if (ord(char) > 96 and ord(char) < 123) or (ord(char) > 64 and ord(char) < 91):
             # Getting the letter ID, where "a" is 0 and "z" is 25
             letter_id = ord(char.lower()) - 97
-            # Checks if the mode is encryption
-            if _mode == "encrypt":
-                # Checking if the shift will move the letter ID above 25, in which case it loops around the count
-                if letter_id + _shift < 26:
-                    new_message += chr(ord(char) + _shift)
-                else:
-                    new_message += chr(ord(char) + _shift - 26)
-            # Else, the mode is decryption
+            # Checking if the shifted ID will be outside of the 0-25 range, looping around if needed
+            if letter_id + _shift > 25:
+                new_message += chr(ord(char) + _shift - 26)
+            elif letter_id + _shift < 0:
+                new_message += chr(ord(char) + _shift + 26)
             else:
-                # Checking if the shift will move the letter ID below 0, in which case it loops around the count
-                if letter_id - _shift >= 0:
-                    new_message += chr(ord(char) - _shift)
-                else:
-                    new_message += chr(ord(char) - _shift + 26)
+                new_message += chr(ord(char) + _shift)
         # If not a letter just rewrite the character
         else:
             new_message += char
