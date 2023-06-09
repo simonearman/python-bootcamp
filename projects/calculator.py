@@ -1,4 +1,5 @@
 def is_number(input):
+    '''Returns True if the variable can be changed to a float'''
     if input is None:
         return False
     try:
@@ -8,36 +9,12 @@ def is_number(input):
         return False
 
 
-def add(n1, n2):
-    '''Returns a float if the sum is a mixed number, returns an int otherwise'''
-    if (n1 + n2) % 1 == 0:
-        return int(n1 + n2)
+def format_num(num):
+    '''Return a float is the variable is a mixed number, returns an integer otherwise'''
+    if num % 1 == 0:
+        return round(int(num), 6)
     else:
-        return n1 + n2
-
-
-def substract(n1, n2):
-    '''Returns a float if the difference is a mixed number, returns an int otherwise'''
-    if (n1 - n2) % 1 == 0:
-        return int(n1 - n2)
-    else:
-        return n1 - n2
-
-
-def multiply(n1, n2):
-    '''Returns a float if the product is a mixed number, returns an int otherwise'''
-    if (n1 * n2) % 1 == 0:
-        return int(n1 * n2)
-    else:
-        return n1 * n2
-
-
-def divide(n1, n2):
-    '''Returns a float if the quotient is a mixed number, returns an int otherwise'''
-    if (n1 / n2) % 1 == 0:
-        return int(n1 / n2)
-    else:
-        return n1 / n2
+        return round(num, 6)
 
 
 def ask_operation():
@@ -55,8 +32,8 @@ def ask_num(message):
     num = input(message)
     while not is_number(num):
         num = input(f"\"{num}\" is not a number. Type in a number: ")
-    if float(num)%1 == 0:
-        return int(num)
+    if float(num)%1 == 0 or float(num) == 0:
+        return int(float(num))
     else:
         return float(num)
 
@@ -67,11 +44,13 @@ num1 = ask_num("Type in the first number: ")
 operation = ask_operation()
 num2 = ask_num("Type in the second number: ")
 
-if operation == "+":
-    print(f"The sum of {num1} and {num2} is {add(num1, num2)}")
+if num2 == 0 and operation == "/":
+    print("Division by 0 is not allowed")
+elif operation == "+":
+    print(f"The sum of {num1} and {num2} is {format_num(num1 + num2)}")
 elif operation == "-":
-    print(f"The difference of {num1} and {num2} is {substract(num1, num2)}")
+    print(f"The difference of {num1} and {num2} is {format_num(num1 - num2)}")
 elif operation == "*":
-    print(f"The product of {num1} and {num2} is {multiply(num1, num2)}")
+    print(f"The product of {num1} and {num2} is {format_num(num1 * num2)}")
 else:
-    print(f"The quotient of {num1} and {num2} is {divide(num1, num2)}")
+    print(f"The quotient of {num1} and {num2} is {format_num(num1 / num2)}")
