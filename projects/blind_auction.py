@@ -8,13 +8,13 @@ def clear_console():
         os.system('clear')
 
 
-def is_float(input):
+def is_number(input):
     if input is None:
         return False
     try:
         float(input)
         return True
-    except:
+    except ValueError:
         return False
 
 
@@ -22,8 +22,8 @@ def is_float(input):
 def ask_bid():
     bid = input("How much would you like to bid? $")
     # Checking if the user's bid is a number, then if it is negative
-    while not is_float(bid) or float(bid) < 0:
-        if not is_float(bid):
+    while not is_number(bid) or float(bid) < 0:
+        if not is_number(bid):
             bid = input(f"\"{bid}\" is not a correct bid. Enter a proper value to bid: $")
         else:
             bid = input("You can't bid a negative amount. How much would you like to bid? $")
