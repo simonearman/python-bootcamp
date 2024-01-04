@@ -15,3 +15,4 @@ This is where I store my projects for the 100 Days of Code python bootcamp.
 * Day 9:    [blind_auction.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/blind_auction.py) (Dictionaries and nesting)
 * Day 10:   [calculator.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/calculator.py) (Return functions)
 * Day 11:   [blackjack.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/blackjack.py)
+* Day 12:   [number_guessing.py](https://github.com/simonearman/python-bootcamp/blob/main/projects/number_guessing.py)
